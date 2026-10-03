@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آزمون فارسی نهم | سامانه آزمون آنلاین</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --p:#1e3c72;--p2:#2a5298;--p3:#1a2f5c;
+  --a:#fbbf24;--a2:#f59e0b;
+  --ok:#10b981;--no:#ef4444;--warn:#f59e0b;
+  --bg:#f1f5f9;--card:#fff;
+  --t1:#0f172a;--t2:#475569;--t3:#94a3b8;
+  --bd:#e2e8f0;
+  --sh:0 4px 20px rgba(0,0,0,.08);
+  --sh-lg:0 20px 60px rgba(0,0,0,.15);
+  --r:16px;--r-lg:20px;--r-xl:28px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Vazirmatn',sans-serif;
+  background:var(--bg);color:var(--t1);
+  line-height:1.7;min-height:100vh;
+  display:flex;flex-direction:column;
+}
+/* =============== هدر =============== */
+.hdr{
+  background:linear-gradient(135deg,#1a2f5c,#1e3c72 40%,#2a5298);
+  color:#fff;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 20px rgba(0,0,0,.15);
+}
+.hdr-in{
+  max-width:1200px;margin:0 auto;padding:14px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-ico{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--a),var(--a2));
+  display:grid;place-items:center;
+  box-shadow:0 6px 18px rgba(251,191,36,.35);
+  flex-shrink:0;
+}
+.brand-ico i{font-size:1.3rem;color:#fff}
+.brand h1{font-size:1rem;font-weight:800;line-height:1.2}
+.brand p{font-size:.72rem;opacity:.75;margin-top:2px}
+.nav{display:flex;gap:4px;background:rgba(255,255,255,.1);padding:4px;border-radius:40px;border:1px solid rgba(255,255,255,.12)}
+.nav button{
+  padding:8px 18px;border:0;background:transparent;color:rgba(255,255,255,.85);
+  border-radius:40px;font-family:inherit;font-size:.85rem;font-weight:700;
+  cursor:pointer;transition:.25s;display:flex;align-items:center;gap:6px;
+}
+.nav button:hover{background:rgba(255,255,255,.12);color:#fff}
+.nav button.on{background:#fff;color:var(--p);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+/* =============== اصلی =============== */
+main{max-width:960px;margin:28px auto;padding:0 20px;width:100%;flex:1}
+.v{display:none;animation:fade .35s}
+.v.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+/* =============== کارت شروع =============== */
+.start-card{
+  background:#fff;border-radius:var(--r-xl);
+  box-shadow:var(--sh-lg);overflow:hidden;
+}
+.start-top{
+  background:linear-gradient(135deg,#1a2f5c,#1e3c72 40%,#2a5298);
+  padding:44px 32px 40px;text-align:center;color:#fff;
+  position:relative;overflow:hidden;
+}
+.start-top::before{
+  content:'';position:absolute;top:-40%;right:-10%;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(251,191,36,.16),transparent 70%);
+}
+.start-top::after{
+  content:'';position:absolute;bottom:-60%;left:-10%;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.12),transparent 70%);
+}
+.start-top>*{position:relative;z-index:1}
+.start-ico{
+  width:88px;height:88px;margin:0 auto 20px;border-radius:24px;
+  background:linear-gradient(135deg,var(--a),var(--a2));
+  display:grid;place-items:center;
+  box-shadow:0 16px 40px rgba(251,191,36,.4),inset 0 -3px 0 rgba(0,0,0,.15);
+  animation:bob 3s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.start-ico i{font-size:2.4rem;color:#fff}
+.start-top h2{font-size:1.7rem;font-weight:800;margin-bottom:8px}
+.start-top p{opacity:.88;font-size:.95rem}
+.start-body{padding:32px 24px 28px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.fld{text-align:right}
+.fld label{
+  display:block;color:var(--t2);font-size:.83rem;font-weight:700;
+  margin-bottom:8px;
+}
+.fld label i{color:var(--p2);margin-left:4px}
+.fld input{
+  width:100%;padding:14px 16px;border:2px solid var(--bd);
+  border-radius:14px;font-family:inherit;font-size:.95rem;
+  transition:.22s;background:var(--bg);color:var(--t1);
+}
+.fld input:focus{
+  outline:0;border-color:var(--p2);background:#fff;
+  box-shadow:0 0 0 4px rgba(42,82,152,.1);
+}
+.btn{
+  padding:12px 26px;border:0;border-radius:14px;
+  font-family:inherit;font-size:.95rem;font-weight:700;
+  cursor:pointer;transition:.22s;
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:8px;text-decoration:none;
+}
+.btn-sm{padding:9px 18px;font-size:.85rem;border-radius:11px}
+.btn-lg{padding:16px 42px;font-size:1.05rem;border-radius:16px}
+.btn-p{
+  background:linear-gradient(135deg,var(--a),var(--a2));color:#1a2f5c;
+  box-shadow:0 8px 22px rgba(251,191,36,.35);
+}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(251,191,36,.45)}
+.btn-dark{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;box-shadow:0 8px 22px rgba(30,60,114,.3)}
+.btn-dark:hover{transform:translateY(-2px)}
+.btn-ok{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 8px 22px rgba(16,185,129,.3)}
+.btn-ok:hover{transform:translateY(-2px)}
+.btn-no{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.btn-no:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(239,68,68,.3)}
+.btn-l{background:var(--bg);color:var(--t1);border:2px solid var(--bd)}
+.btn-l:hover{background:var(--bd)}
+.btn-full{width:100%}
+.feat{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:12px;margin-top:24px;padding-top:24px;
+  border-top:1px solid var(--bd);
+}
+.feat-it{
+  text-align:center;padding:14px 8px;border-radius:14px;
+  background:var(--bg);transition:.22s;
+}
+.feat-it:hover{background:#fff;box-shadow:var(--sh);transform:translateY(-3px)}
+.feat-it i{
+  display:block;font-size:1.4rem;color:var(--p2);margin-bottom:6px;
+}
+.feat-it span{font-size:.78rem;color:var(--t2);font-weight:700}
+/* =============== آزمون =============== */
+.exam-bar{
+  background:#fff;border-radius:var(--r-lg);
+  padding:14px 20px;box-shadow:var(--sh);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;margin-bottom:16px;flex-wrap:wrap;
+  position:sticky;top:78px;z-index:50;
+  border:2px solid transparent;
+}
+.exam-user{display:flex;align-items:center;gap:10px;min-width:160px}
+.exam-user-ic{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,var(--p),var(--p2));
+  display:grid;place-items:center;color:#fff;font-size:1.1rem;flex-shrink:0;
+}
+.exam-user strong{font-size:.9rem;display:block;line-height:1.3}
+.exam-user span{font-size:.75rem;color:var(--t3)}
+.prog{flex:1;min-width:140px;max-width:280px}
+.prog-h{display:flex;justify-content:space-between;font-size:.75rem;color:var(--t2);font-weight:700;margin-bottom:6px}
+.prog-bar{height:8px;background:var(--bd);border-radius:40px;overflow:hidden}
+.prog-fill{
+  height:100%;background:linear-gradient(90deg,var(--p),var(--a));
+  border-radius:40px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0;
+}
+.timer{
+  background:linear-gradient(135deg,var(--p),var(--p2));
+  color:#fff;padding:10px 18px;border-radius:14px;
+  font-weight:800;display:flex;align-items:center;gap:8px;
+  font-variant-numeric:tabular-nums;font-size:.95rem;
+  box-shadow:0 6px 16px rgba(30,60,114,.28);
+  white-space:nowrap;
+}
+.timer.warn{background:linear-gradient(135deg,#ef4444,#dc2626);animation:pls 1s infinite}
+@keyframes pls{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.q-list{display:flex;flex-direction:column;gap:14px}
+.q{
+  background:#fff;border-radius:var(--r-lg);
+  padding:20px 22px;box-shadow:var(--sh);
+  border:2px solid transparent;transition:.28s;
+}
+.q:hover{box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.q.done{border-color:rgba(16,185,129,.35);background:linear-gradient(135deg,#fff,#f0fdf4)}
+.q-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.q-n{
+  background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;
+  padding:5px 14px;border-radius:40px;font-size:.78rem;font-weight:800;
+}
+.q-st{font-size:1.3rem;color:var(--t3);transition:.3s}
+.q.done .q-st{color:var(--ok)}
+.q-t{font-size:1.02rem;font-weight:700;line-height:1.85;margin-bottom:14px;color:var(--t1)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{
+  background:var(--bg);border:2px solid var(--bd);border-radius:14px;
+  padding:13px 16px;display:flex;align-items:center;gap:12px;
+  cursor:pointer;transition:.22s;font-size:.92rem;user-select:none;
+}
+.opt:hover{border-color:var(--p2);background:#f0f7ff;transform:translateY(-2px)}
+.opt.on{
+  border-color:var(--p);background:linear-gradient(135deg,#eef2ff,#e0e7ff);
+  box-shadow:0 6px 18px rgba(30,60,114,.14);
+}
+.opt input{display:none}
+.opt-m{
+  width:30px;height:30px;background:#fff;border:2px solid var(--bd);
+  border-radius:50%;display:grid;place-items:center;
+  font-weight:800;font-size:.8rem;color:var(--t2);flex-shrink:0;transition:.22s;
+}
+.opt.on .opt-m{background:var(--p);border-color:var(--p);color:#fff;transform:scale(1.08)}
+.opt-t{flex:1;line-height:1.6}
+.opt.on .opt-t{font-weight:700;color:var(--p)}
+.exam-foot{
+  text-align:center;margin-top:18px;padding:22px;
+  background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh);
+}
+.exam-foot p{color:var(--t2);font-size:.85rem;margin-bottom:14px}
+/* =============== نتیجه =============== */
+.res{
+  background:#fff;border-radius:var(--r-xl);
+  box-shadow:var(--sh-lg);overflow:hidden;
+  animation:fade .5s;
+}
+.res-in{padding:44px 32px 36px;text-align:center}
+.res-bdg{
+  width:110px;height:110px;border-radius:50%;
+  display:grid;place-items:center;margin:0 auto 22px;
+  font-size:2.8rem;color:#fff;
+  animation:pop .6s cubic-bezier(.68,-.55,.265,1.55);
+}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.1)}100%{transform:scale(1)}}
+.res-bdg.ok{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 20px 50px rgba(16,185,129,.35)}
+.res-bdg.good{background:linear-gradient(135deg,#3b82f6,#2563eb);box-shadow:0 20px 50px rgba(59,130,246,.35)}
+.res-bdg.mid{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 20px 50px rgba(245,158,11,.35)}
+.res-bdg.low{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 20px 50px rgba(239,68,68,.35)}
+.res-in h2{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.res-in>p{color:var(--t2);margin-bottom:24px}
+.res-sc{
+  background:linear-gradient(135deg,#1a2f5c,#2a5298);color:#fff;
+  padding:26px;border-radius:var(--r-lg);
+  margin:0 auto 22px;max-width:280px;
+  box-shadow:0 18px 45px rgba(30,60,114,.35);
+}
+.res-sc .v{
+  font-size:3.6rem;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#fff,var(--a));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.res-sc .l{opacity:.9;font-size:.9rem;margin-top:6px}
+.res-grid{display:flex;justify-content:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.res-grid>div{
+  background:var(--bg);padding:14px 22px;border-radius:14px;
+  min-width:100px;border:2px solid var(--bd);
+}
+.res-grid b{display:block;font-size:1.5rem;font-weight:900;color:var(--p);line-height:1.2}
+.res-grid small{font-size:.78rem;color:var(--t2);font-weight:700}
+.rnk{
+  display:inline-block;padding:10px 26px;border-radius:40px;
+  font-weight:800;font-size:1rem;margin-bottom:22px;
+}
+.rnk.ok{background:#dcfce7;color:#166534}
+.rnk.good{background:#dbeafe;color:#1e40af}
+.rnk.mid{background:#fef3c7;color:#92400e}
+.rnk.low{background:#fee2e2;color:#991b1b}
+.res-act{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* =============== ادمین =============== */
+.login-box{
+  max-width:440px;margin:20px auto;background:#fff;
+  border-radius:var(--r-xl);padding:42px 32px;
+  box-shadow:var(--sh-lg);text-align:center;
+}
+.login-ic{
+  width:84px;height:84px;margin:0 auto 22px;border-radius:24px;
+  background:linear-gradient(135deg,var(--p),var(--p2));
+  display:grid;place-items:center;
+  box-shadow:0 16px 40px rgba(30,60,114,.35);
+}
+.login-ic i{font-size:2.2rem;color:var(--a)}
+.login-box h2{color:var(--p);margin-bottom:6px;font-size:1.4rem;font-weight:800}
+.login-box>p{color:var(--t2);margin-bottom:26px;font-size:.9rem}
+.pw{
+  width:100%;padding:16px;border:2px solid var(--bd);
+  border-radius:16px;font-family:inherit;font-size:1.5rem;
+  text-align:center;letter-spacing:8px;font-weight:800;
+  margin-bottom:14px;transition:.22s;background:var(--bg);
+}
+.pw:focus{outline:0;border-color:var(--p);background:#fff;box-shadow:0 0 0 5px rgba(30,60,114,.1)}
+.err{
+  color:var(--no);background:#fef2f2;padding:10px;
+  border-radius:10px;font-size:.85rem;font-weight:700;
+  margin-bottom:14px;display:none;
+}
+.err.on{display:block}
+.tabs{
+  display:inline-flex;gap:4px;background:#fff;padding:5px;
+  border-radius:40px;box-shadow:var(--sh);margin-bottom:20px;
+}
+.tab{
+  padding:11px 22px;border:0;background:transparent;border-radius:40px;
+  font-family:inherit;font-size:.87rem;font-weight:700;cursor:pointer;
+  color:var(--t2);transition:.22s;display:flex;align-items:center;gap:8px;
+}
+.tab:hover{color:var(--p)}
+.tab.on{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;box-shadow:0 6px 16px rgba(30,60,114,.25)}
+.tc{display:none;animation:fade .3s}
+.tc.on{display:block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.stat{
+  background:#fff;padding:16px;border-radius:var(--r);
+  box-shadow:var(--sh);display:flex;align-items:center;gap:14px;
+  transition:.25s;
+}
+.stat:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.1)}
+.stat-ic{
+  width:48px;height:48px;border-radius:14px;
+  display:grid;place-items:center;font-size:1.3rem;flex-shrink:0;
+}
+.stat-ic.b{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#2563eb}
+.stat-ic.g{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#16a34a}
+.stat-ic.a{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#d97706}
+.stat-ic.r{background:linear-gradient(135deg,#fee2e2,#fecaca);color:#dc2626}
+.stat-ic.p{background:linear-gradient(135deg,#ede9fe,#ddd6fe);color:#7c3aed}
+.stat b{font-size:1.4rem;font-weight:900;color:var(--t1);line-height:1.2;display:block}
+.stat small{font-size:.78rem;color:var(--t2);font-weight:700}
+.tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.search{flex:1;min-width:200px;position:relative}
+.search i{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:.9rem}
+.search input{
+  width:100%;padding:12px 40px 12px 14px;border:2px solid var(--bd);
+  border-radius:14px;font-family:inherit;font-size:.88rem;background:#fff;transition:.2s;
+}
+.search input:focus{outline:0;border-color:var(--p);box-shadow:0 0 0 4px rgba(30,60,114,.08)}
+.tw{
+  background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh);
+  overflow:hidden;overflow-x:auto;
+}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:700px}
+thead th{
+  background:linear-gradient(135deg,#1a2f5c,var(--p2));
+  color:#fff;padding:14px 12px;text-align:right;font-weight:700;font-size:.8rem;white-space:nowrap;
+}
+tbody td{padding:12px;border-bottom:1px solid var(--bd)}
+tbody tr{transition:.18s}
+tbody tr:hover td{background:#f8fafc}
+tbody tr:last-child td{border-bottom:0}
+.bdg{padding:5px 12px;border-radius:40px;font-weight:800;font-size:.83rem;display:inline-block}
+.bdg.ok{background:#dcfce7;color:#166534}
+.bdg.good{background:#dbeafe;color:#1e40af}
+.bdg.mid{background:#fef3c7;color:#92400e}
+.bdg.low{background:#fee2e2;color:#991b1b}
+.dt{font-size:.75rem;color:var(--t2)}
+.ico-b{
+  width:34px;height:34px;border:0;background:var(--bg);color:var(--t2);
+  border-radius:10px;cursor:pointer;transition:.22s;
+  display:inline-grid;place-items:center;font-size:.85rem;
+}
+.ico-b:hover{background:var(--p);color:#fff;transform:scale(1.08)}
+.ico-b.d:hover{background:var(--no)}
+.add-q{
+  background:#fff;padding:22px;border-radius:var(--r-lg);
+  box-shadow:var(--sh);margin-bottom:18px;
+}
+.add-q h3{
+  color:var(--p);font-size:1.05rem;margin-bottom:16px;
+  font-weight:800;display:flex;align-items:center;gap:8px;
+}
+.add-q input{
+  width:100%;padding:12px 14px;border:2px solid var(--bd);
+  border-radius:12px;font-family:inherit;font-size:.88rem;
+  margin-bottom:10px;transition:.2s;background:var(--bg);
+}
+.add-q input:focus{outline:0;border-color:var(--p);background:#fff;box-shadow:0 0 0 4px rgba(30,60,114,.08)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.correct-row{
+  display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  font-weight:700;padding:12px;background:var(--bg);border-radius:12px;
+}
+.correct-row select{
+  padding:9px 14px;border:2px solid var(--bd);border-radius:10px;
+  font-family:inherit;background:#fff;cursor:pointer;font-weight:700;font-size:.88rem;
+}
+.adm-q{
+  background:#fff;border-radius:var(--r-lg);padding:18px;
+  margin-bottom:12px;box-shadow:var(--sh);transition:.25s;
+  border:2px solid transparent;
+}
+.adm-q:hover{box-shadow:0 8px 24px rgba(0,0,0,.09);border-color:rgba(30,60,114,.1)}
+.adm-q-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.adm-q-t{flex:1;font-weight:700;line-height:1.7;font-size:.95rem}
+.adm-q-o{display:flex;flex-direction:column;gap:6px}
+.adm-q-it{
+  padding:9px 14px;background:var(--bg);border-radius:10px;
+  font-size:.88rem;display:flex;align-items:center;gap:10px;
+  border:2px solid transparent;
+}
+.adm-q-it.c{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#166534;border-color:var(--ok);font-weight:700}
+.adm-q-m{
+  width:26px;height:26px;background:#fff;border-radius:50%;
+  display:grid;place-items:center;font-weight:800;font-size:.75rem;flex-shrink:0;
+}
+.adm-q-it.c .adm-q-m{background:var(--ok);color:#fff}
+.empty{
+  text-align:center;padding:56px 20px;background:#fff;
+  border-radius:var(--r-lg);color:var(--t3);box-shadow:var(--sh);
+}
+.empty i{font-size:3rem;margin-bottom:14px;opacity:.35;display:block}
+.empty p{font-weight:700;font-size:.95rem}
+/* =============== مودال =============== */
+.modal{
+  position:fixed;inset:0;background:rgba(15,23,42,.65);
+  backdrop-filter:blur(8px);display:none;
+  align-items:center;justify-content:center;z-index:1000;padding:16px;
+  animation:fade .25s;
+}
+.modal.on{display:flex}
+.modal-c{
+  background:#fff;border-radius:var(--r-xl);width:100%;max-width:780px;
+  max-height:92vh;display:flex;flex-direction:column;
+  box-shadow:0 40px 100px rgba(0,0,0,.5);
+  animation:up .35s cubic-bezier(.4,0,.2,1);overflow:hidden;
+}
+@keyframes up{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-h{
+  padding:18px 22px;border-bottom:2px solid var(--bd);
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(135deg,#f8fafc,#f1f5f9);
+}
+.modal-h h3{color:var(--p);font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:10px}
+.x{
+  width:38px;height:38px;border:0;background:#fee2e2;color:var(--no);
+  border-radius:50%;font-size:1rem;cursor:pointer;transition:.25s;
+  display:grid;place-items:center;
+}
+.x:hover{background:var(--no);color:#fff;transform:rotate(90deg)}
+.modal-b{padding:20px;overflow-y:auto}
+/* =============== کارنامه =============== */
+.rp-h{
+  padding:28px 20px;border-radius:var(--r-lg);text-align:center;
+  color:#fff;margin-bottom:18px;position:relative;overflow:hidden;
+}
+.rp-h::before{
+  content:'';position:absolute;top:-40%;right:-15%;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);
+}
+.rp-h.ok{background:linear-gradient(135deg,#10b981,#059669)}
+.rp-h.good{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.rp-h.mid{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.rp-h.low{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.rp-h>*{position:relative}
+.rp-name{font-size:1.4rem;font-weight:900;margin-bottom:4px}
+.rp-cls{opacity:.9;font-size:.9rem;margin-bottom:16px}
+.rp-sc{font-size:3.4rem;font-weight:900;line-height:1}
+.rp-sc small{font-size:1.3rem;opacity:.75}
+.rp-dt{opacity:.85;font-size:.8rem;margin-top:10px}
+.rp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.rp-cell{
+  background:var(--bg);padding:14px 10px;border-radius:14px;
+  text-align:center;border:2px solid var(--bd);transition:.22s;
+}
+.rp-cell:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.rp-cell b{display:block;font-size:1.3rem;font-weight:900;color:var(--p);margin-bottom:2px}
+.rp-cell small{font-size:.75rem;color:var(--t2);font-weight:700}
+.rp-sub{
+  color:var(--p);font-size:1rem;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+  padding-bottom:10px;border-bottom:2px solid var(--bd);font-weight:800;
+}
+.ans-list{display:flex;flex-direction:column;gap:10px}
+.ans{
+  padding:14px 16px;border-radius:14px;display:flex;
+  align-items:flex-start;gap:12px;background:var(--bg);
+  border-right:4px solid var(--bd);font-size:.88rem;
+}
+.ans.ok{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-right-color:var(--ok)}
+.ans.no{background:linear-gradient(135deg,#fef2f2,#fee2e2);border-right-color:var(--no)}
+.ans>i{font-size:1.2rem;margin-top:3px;flex-shrink:0}
+.ans.ok>i{color:var(--ok)}
+.ans.no>i{color:var(--no)}
+.ans-n{
+  font-weight:900;color:var(--p);background:#fff;
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;flex-shrink:0;font-size:.8rem;
+}
+.ans-c{flex:1}
+.ans-q{font-weight:700;margin-bottom:6px;line-height:1.7}
+.ans-a{font-size:.82rem;display:flex;gap:8px;flex-wrap:wrap}
+.ct{color:#16a34a;font-weight:700}
+.wt{color:#dc2626;font-weight:700}
+.rp-act{
+  display:flex;gap:10px;justify-content:center;
+  margin-top:18px;padding-top:18px;border-top:2px solid var(--bd);flex-wrap:wrap;
+}
+/* =============== فوتر =============== */
+footer{
+  background:linear-gradient(135deg,#1a2f5c,var(--p));
+  color:rgba(255,255,255,.72);text-align:center;
+  padding:18px;font-size:.82rem;margin-top:auto;
+}
+footer strong{color:var(--a)}
+/* =============== ریسپانسیو =============== */
+@media(max-width:820px){
+  .hdr-in{padding:12px 16px}
+  main{padding:0 14px;margin:20px auto}
+  .f-grid{grid-template-columns:1fr}
+  .opts{grid-template-columns:1fr}
+  .feat{grid-template-columns:repeat(2,1fr)}
+  .rp-grid{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .q{padding:16px}
+  .exam-bar{top:70px}
+}
+@media(max-width:520px){
+  .brand h1{font-size:.9rem}
+  .nav button{padding:7px 12px;font-size:.78rem}
+  .start-top{padding:32px 20px 28px}
+  .start-top h2{font-size:1.3rem}
+  .start-ico{width:72px;height:72px}
+  .start-ico i{font-size:2rem}
+  .res-in{padding:32px 18px 26px}
+  .res-sc .v{font-size:2.8rem}
+  .rp-sc{font-size:2.6rem}
+  .tabs{width:100%;display:flex}
+  .tab{flex:1;justify-content:center;padding:9px 12px;font-size:.78rem}
+  .stat{padding:12px}
+  .stat-ic{width:42px;height:42px;font-size:1.15rem}
+  .stat b{font-size:1.2rem}
+}
+@media print{
+  .hdr,footer,.modal-h .x,.rp-act,.nav{display:none!important}
+  .modal{position:static;background:#fff;backdrop-filter:none;padding:0}
+  .modal-c{box-shadow:none;max-height:none}
+  body{background:#fff}
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(135deg,var(--p),var(--p2));border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--p)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="brand">
+      <div class="brand-ico"><i class="fas fa-graduation-cap"></i></div>
+      <div>
+        <h1>آزمون فارسی نهم</h1>
+        <p>سامانه آزمون آنلاین</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="on" data-v="home"><i class="fas fa-home"></i> خانه</button>
+      <button data-v="admin"><i class="fas fa-shield-alt"></i> پنل مدیر</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ خانه ============ -->
+<section class="v on" id="v-home">
+
+  <div class="start-card" id="startCard">
+    <div class="start-top">
+      <div class="start-ico"><i class="fas fa-book-open"></i></div>
+      <h2>به آزمون خوش آمدید</h2>
+      <p>۲۰ سوال استاندارد • ۲۰ دقیقه • نمره از ۲۰</p>
+    </div>
+    <div class="start-body">
+      <div class="f-grid">
+        <div class="fld">
+          <label><i class="fas fa-user"></i>نام و نام خانوادگی</label>
+          <input type="text" id="sName" placeholder="علی محمدی" maxlength="50">
+        </div>
+        <div class="fld">
+          <label><i class="fas fa-school"></i>کلاس</label>
+          <input type="text" id="sCls" placeholder="۹/۱" maxlength="20">
+        </div>
+      </div>
+      <button class="btn btn-p btn-lg btn-full" id="startBtn">
+        <i class="fas fa-play"></i> شروع آزمون
+      </button>
+      <div class="feat">
+        <div class="feat-it"><i class="fas fa-clock"></i><span>۲۰ دقیقه</span></div>
+        <div class="feat-it"><i class="fas fa-list-ol"></i><span>۲۰ سوال</span></div>
+        <div class="feat-it"><i class="fas fa-star"></i><span>نمره از ۲۰</span></div>
+        <div class="feat-it"><i class="fas fa-database"></i><span>ذخیره دائمی</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="examCard" style="display:none">
+    <div class="exam-bar">
+      <div class="exam-user">
+        <div class="exam-user-ic"><i class="fas fa-user"></i></div>
+        <div>
+          <strong id="eName"></strong>
+          <span id="eCls"></span>
+        </div>
+      </div>
+      <div class="prog">
+        <div class="prog-h"><span>پیشرفت</span><span id="progTxt">۰ از ۲۰</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      </div>
+      <div class="timer" id="timerBox">
+        <i class="fas fa-clock"></i>
+        <span id="timerTxt">۲۰:۰۰</span>
+      </div>
+    </div>
+    <form id="examForm">
+      <div class="q-list" id="qBox"></div>
+      <div class="exam-foot">
+        <p><i class="fas fa-info-circle"></i> پس از ثبت، امکان تغییر پاسخ‌ها وجود ندارد</p>
+        <button class="btn btn-p btn-lg" type="submit" id="subBtn">
+          <i class="fas fa-check-circle"></i> ثبت نهایی پاسخ‌ها
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div id="resCard" class="res" style="display:none"></div>
+
+</section>
+
+<!-- ============ ادمین ============ -->
+<section class="v" id="v-admin">
+
+  <div class="login-box" id="loginBox">
+    <div class="login-ic"><i class="fas fa-shield-alt"></i></div>
+    <h2>ورود مدیر</h2>
+    <p>رمز عبور را وارد کنید</p>
+    <input type="password" id="adminPw" class="pw" placeholder="••••" maxlength="10">
+    <p class="err" id="pwErr"><i class="fas fa-exclamation-triangle"></i> رمز اشتباه است!</p>
+    <button class="btn btn-dark btn-lg btn-full" id="loginBtn">
+      <i class="fas fa-sign-in-alt"></i> ورود
+    </button>
+  </div>
+
+  <div id="adminPanel" style="display:none">
+    <div class="tabs">
+      <button class="tab on" data-t="tabG"><i class="fas fa-chart-line"></i> کارنامه‌ها</button>
+      <button class="tab" data-t="tabQ"><i class="fas fa-list"></i> مدیریت سوالات</button>
+    </div>
+
+    <div class="tc on" id="tabG">
+      <div class="stats" id="stats"></div>
+      <div class="tools">
+        <div class="search">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchG" placeholder="جستجو بر اساس نام یا کلاس...">
+        </div>
+        <button class="btn btn-no" id="clearGBtn">
+          <i class="fas fa-trash"></i> پاک کردن همه
+        </button>
+      </div>
+      <div id="gradesList"></div>
+    </div>
+
+    <div class="tc" id="tabQ">
+      <div class="add-q">
+        <h3><i class="fas fa-plus-circle"></i> افزودن سوال جدید</h3>
+        <input type="text" id="nQText" placeholder="متن سوال...">
+        <div class="g2">
+          <input type="text" id="nO1" placeholder="گزینه ۱">
+          <input type="text" id="nO2" placeholder="گزینه ۲">
+          <input type="text" id="nO3" placeholder="گزینه ۳">
+          <input type="text" id="nO4" placeholder="گزینه ۴">
+        </div>
+        <div class="correct-row">
+          <label>پاسخ صحیح:</label>
+          <select id="nCorrect">
+            <option value="0">گزینه ۱</option>
+            <option value="1">گزینه ۲</option>
+            <option value="2">گزینه ۳</option>
+            <option value="3">گزینه ۴</option>
+          </select>
+        </div>
+        <button class="btn btn-ok btn-lg btn-full" id="addQBtn">
+          <i class="fas fa-plus"></i> افزودن سوال
+        </button>
+      </div>
+      <div id="qList"></div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- مودال کارنامه -->
+<div class="modal" id="rModal">
+  <div class="modal-c">
+    <div class="modal-h">
+      <h3><i class="fas fa-file-alt"></i> کارنامه آزمون</h3>
+      <button class="x" onclick="closeM('rModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-b" id="rBody"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© ۱۴۰۳ سامانه آزمون آنلاین فارسی نهم — <strong>داده‌ها روی دستگاه شما ذخیره می‌شود</strong></p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const toFa = n => String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const esc = t => {const d=document.createElement('div');d.textContent=t;return d.innerHTML;};
+
+// ============ IndexedDB ============
+const DB='F9DB';let db=null;
+function openDB(){return new Promise((rs,rj)=>{
+  const r=indexedDB.open(DB,1);
+  r.onupgradeneeded=e=>{
+    const d=e.target.result;
+    if(!d.objectStoreNames.contains('q')){
+      d.createObjectStore('q',{keyPath:'id',autoIncrement:true});
+    }
+    if(!d.objectStoreNames.contains('g')){
+      d.createObjectStore('g',{keyPath:'id',autoIncrement:true});
+    }
+  };
+  r.onsuccess=e=>{db=e.target.result;rs()};
+  r.onerror=e=>rj(e.target.error);
+})}
+const tx=(s,m='readonly')=>db.transaction(s,m).objectStore(s);
+const getAll=s=>new Promise((rs,rj)=>{const r=tx(s).getAll();r.onsuccess=()=>rs(r.result);r.onerror=()=>rj(r.error)});
+const add=(s,d)=>new Promise((rs,rj)=>{const r=tx(s,'readwrite').add(d);r.onsuccess=()=>rs(r.result);r.onerror=()=>rj(r.error)});
+const del=(s,i)=>new Promise((rs,rj)=>{const r=tx(s,'readwrite').delete(i);r.onsuccess=()=>rs();r.onerror=()=>rj(r.error)});
+const clr=s=>new Promise((rs,rj)=>{const r=tx(s,'readwrite').clear();r.onsuccess=()=>rs();r.onerror=()=>rj(r.error)});
+const get=(s,i)=>new Promise((rs,rj)=>{const r=tx(s).get(i);r.onsuccess=()=>rs(r.result);r.onerror=()=>rj(r.error)});
+
+// ============ ۲۰ سوال پیش‌فرض ============
+const DEFQ=[
+  ['معنی واژه «فراست» چیست؟','دانایی و هوشمندی','کوشش و تلاش','بزرگواری','سخاوت',0],
+  ['در جمله «او را به مهمانی دعوت کردند»، فعل چه نوع فعلی است؟','معلوم','مجهول','گذرا','ناگذر',1],
+  ['آرایه ادبی «تشخیص» در کدام گزینه دیده می‌شود؟','ابر و باد و مه و خورشید و فلک در کارند','دست در حلقه آن زلف دو تا نتوان کرد','به نام خداوند جان و خرد','سرو چمان من چرا میل چمن نمی‌کند',0],
+  ['معنی «سرو چمان» چیست؟','سرو خرامان','سرو بلند','سرو کوتاه','سرو خشک',0],
+  ['کدام گزینه از آثار سعدی است؟','گلستان','مثنوی','دیوان حافظ','خمسه',0],
+  ['در عبارت «کتاب را بخوان»، «را» چه نقشی دارد؟','نشانه مفعول','حرف اضافه','نشانه فاعل','حرف ربط',0],
+  ['مترادف واژه «شجاع» کدام است؟','دلیر','ترسو','باهوش','بخیل',0],
+  ['در «به نام خداوند جان و خرد»، «خرد» به چه معناست؟','عقل','جان','دل','علم',0],
+  ['کدام گزینه «صفت» است؟','زیبا','زیبایی','زیستن','زیست',0],
+  ['معنی «مستور» چیست؟','پوشیده','آشکار','بیدار','خواب',0],
+  ['کدام یک از عناصر داستان نیست؟','قافیه','شخصیت','زمان','مکان',0],
+  ['در «چشمه در دل کوه می‌جوشد»، کدام آرایه است؟','تشخیص','تشبیه','استعاره','کنایه',0],
+  ['مترادف «غمگین» کدام است؟','محزون','خوشحال','شادمان','مسرور',0],
+  ['کدام گزینه «فعل ماضی» است؟','رفتم','می‌روم','خواهم رفت','برو',0],
+  ['«دست و پا کردن» چه نوع کنایه‌ای است؟','تلاش کردن','راه رفتن','ورزش کردن','رقصیدن',0],
+  ['در «کتابِ من»، «ِ» چه نقشی دارد؟','کسره اضافه','حرف اضافه','نشانه مفعول','حرف ربط',0],
+  ['مخالف «آسان» کدام است؟','سخت','راحت','ساده','روان',0],
+  ['کدام گزینه «ضمیر» است؟','او','کتاب','خانه','درخت',0],
+  ['معنی «بی‌گمان» چیست؟','قطعاً','شاید','احتمالاً','شکاً',0],
+  ['کدام آرایه در «ماه چون نان است» وجود دارد؟','تشبیه','استعاره','کنایه','تشخیص',0]
+];
+async function seed(){
+  const qs=await getAll('q');
+  if(qs.length)return;
+  for(const q of DEFQ){
+    await add('q',{text:q[0],options:[q[1],q[2],q[3],q[4]],correct:q[5],created_at:Date.now()});
+  }
+}
+
+// ============ State ============
+const S={qs:[],stu:null,ans:{},time:1200,tmr:null,done:false,grades:[],allQ:[]};
+
+// ============ ناوبری ============
+document.querySelectorAll('.nav button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.v').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    $('v-'+b.dataset.v).classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+});
+
+// ============ شروع ============
+$('startBtn').onclick=async()=>{
+  const n=$('sName').value.trim(),c=$('sCls').value.trim();
+  if(n.length<3)return alert('نام را کامل وارد کنید!');
+  if(!c)return alert('کلاس را وارد کنید!');
+  S.qs=await getAll('q');
+  if(!S.qs.length)return alert('سوالی وجود ندارد!');
+  S.stu={n,c};S.ans={};S.done=false;S.time=1200;
+  $('startCard').style.display='none';
+  $('resCard').style.display='none';
+  $('examCard').style.display='block';
+  $('eName').textContent=n;
+  $('eCls').textContent='کلاس '+c;
+  renderQ();startTmr();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+function renderQ(){
+  $('qBox').innerHTML=S.qs.map((q,i)=>`
+    <div class="q" data-qid="${q.id}">
+      <div class="q-h">
+        <span class="q-n">سوال ${toFa(i+1)}</span>
+        <span class="q-st" id="st_${q.id}"><i class="far fa-circle"></i></span>
+      </div>
+      <div class="q-t">${esc(q.text)}</div>
+      <div class="opts">
+        ${q.options.map((o,oi)=>`
+          <label class="opt" data-qid="${q.id}" data-oid="${oi}">
+            <input type="radio" name="q_${q.id}" value="${oi}">
+            <span class="opt-m">${toFa(oi+1)}</span>
+            <span class="opt-t">${esc(o)}</span>
+          </label>
+        `).join('')}
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.opt').forEach(o=>{
+    o.onclick=function(){
+      const qid=this.dataset.qid,oid=+this.dataset.oid;
+      S.ans[qid]=oid;
+      document.querySelectorAll(`.opt[data-qid="${qid}"]`).forEach(x=>x.classList.remove('on'));
+      this.classList.add('on');
+      const card=document.querySelector(`.q[data-qid="${qid}"]`);
+      if(card)card.classList.add('done');
+      const st=$('st_'+qid);
+      if(st)st.innerHTML='<i class="fas fa-check-circle"></i>';
+      updateProg();
+    };
+  });
+  updateProg();
+}
+
+function updateProg(){
+  const d=Object.keys(S.ans).length,t=S.qs.length;
+  $('progTxt').textContent=`${toFa(d)} از ${toFa(t)}`;
+  $('progFill').style.width=(d/t*100)+'%';
+}
+
+function startTmr(){
+  clearInterval(S.tmr);upTmr();
+  S.tmr=setInterval(()=>{
+    S.time--;upTmr();
+    if(S.time<=0){
+      clearInterval(S.tmr);
+      alert('⏰ زمان به پایان رسید!');
+      $('examForm').requestSubmit();
+    }
+  },1000);
+}
+function upTmr(){
+  const m=Math.floor(S.time/60),s=S.time%60;
+  $('timerTxt').textContent=`${toFa(String(m).padStart(2,'0'))}:${toFa(String(s).padStart(2,'0'))}`;
+  $('timerBox').classList.toggle('warn',S.time<=60);
+}
+
+// ============ ثبت ============
+$('examForm').onsubmit=async e=>{
+  e.preventDefault();
+  if(S.done)return;
+  const un=S.qs.length-Object.keys(S.ans).length;
+  if(un>0&&!confirm(`${toFa(un)} سوال بی‌پاسخ دارید. مطمئنید؟`))return;
+  S.done=true;clearInterval(S.tmr);
+
+  const cmap={};S.qs.forEach(q=>cmap[q.id]=q.correct);
+  let cor=0;
+  const det=S.qs.map(q=>{
+    const sel=S.ans[q.id]!==undefined?S.ans[q.id]:-1;
+    const ok=sel===q.correct;
+    if(ok)cor++;
+    return{questionId:q.id,selected:sel,correct:q.correct,isCorrect:ok};
+  });
+  const tot=S.qs.length;
+  const sc=Math.round(cor/tot*20*10)/10;
+  const pc=Math.round(cor/tot*100);
+  const rec={
+    student_name:S.stu.n,student_class:S.stu.c,
+    score:sc,correct_count:cor,total_questions:tot,percentage:pc,
+    answers:det,created_at:Date.now()
+  };
+  const gid=await add('g',rec);
+  rec.id=gid;
+  showRes(rec);
+};
+
+function showRes(r){
+  $('examCard').style.display='none';
+  const rk=r.percentage>=90?['عالی','ok','fa-trophy']:
+           r.percentage>=75?['خوب','good','fa-medal']:
+           r.percentage>=50?['متوسط','mid','fa-award']:
+                            ['نیاز به تلاش','low','fa-book'];
+  $('resCard').innerHTML=`
+    <div class="res-in">
+      <div class="res-bdg ${rk[1]}"><i class="fas ${rk[2]}"></i></div>
+      <h2>آزمون با موفقیت ثبت شد</h2>
+      <p><strong>${esc(S.stu.n)}</strong> عزیز</p>
+      <div class="res-sc">
+        <div class="v">${toFa(r.score)}</div>
+        <div class="l">از ۲۰ نمره</div>
+      </div>
+      <div class="res-grid">
+        <div><b>${toFa(r.correct_count)}</b><small>صحیح</small></div>
+        <div><b>${toFa(r.total_questions-r.correct_count)}</b><small>غلط</small></div>
+        <div><b>${toFa(r.percentage)}٪</b><small>درصد</small></div>
+      </div>
+      <div><span class="rnk ${rk[1]}">${rk[0]}</span></div>
+      <div class="res-act">
+        <button class="btn btn-dark" onclick="openR(${r.id})"><i class="fas fa-file-alt"></i> کارنامه کامل</button>
+        <button class="btn btn-l" onclick="location.reload()"><i class="fas fa-redo"></i> آزمون جدید</button>
+      </div>
+    </div>`;
+  $('resCard').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ============ کارنامه ============
+async function openR(id){
+  const rec=await get('g',id);
+  if(!rec)return alert('کارنامه یافت نشد!');
+  const allQ=await getAll('q');
+  const qm={};allQ.forEach(q=>qm[q.id]=q);
+  const en=rec.answers.map(a=>{
+    const q=qm[a.questionId];
+    return{...a,questionText:q?q.text:'حذف شده',options:q?q.options:[]};
+  });
+  renderR({...rec,answers:en});
+  openM('rModal');
+}
+window.openR=openR;
+
+function renderR(r){
+  const rk=r.percentage>=90?['عالی','ok']:
+           r.percentage>=75?['خوب','good']:
+           r.percentage>=50?['متوسط','mid']:['نیاز به تلاش','low'];
+  let h=r.answers.map((a,i)=>{
+    const c=a.isCorrect?'ok':'no';
+    const ic=a.isCorrect?'fa-check-circle':'fa-times-circle';
+    const st=a.selected>=0?(a.options[a.selected]||'—'):'بدون پاسخ';
+    const ct=a.options[a.correct]||'—';
+    return`<div class="ans ${c}">
+      <i class="fas ${ic}"></i>
+      <span class="ans-n">${toFa(i+1)}</span>
+      <div class="ans-c">
+        <div class="ans-q">${esc(a.questionText)}</div>
+        <div class="ans-a">${a.isCorrect
+          ?`<span class="ct">✓ پاسخ شما: ${esc(st)}</span>`
+          :`<span class="wt">✗ شما: ${esc(st)}</span><span class="ct">✓ صحیح: ${esc(ct)}</span>`}</div>
+      </div>
+    </div>`;
+  }).join('');
+  $('rBody').innerHTML=`
+    <div class="rp-h ${rk[1]}">
+      <div class="rp-name">${esc(r.student_name)}</div>
+      <div class="rp-cls">کلاس ${esc(r.student_class)}</div>
+      <div class="rp-sc">${toFa(r.score)}<small>/۲۰</small></div>
+      <div class="rp-dt">${new Date(r.created_at).toLocaleString('fa-IR')}</div>
+    </div>
+    <div class="rp-grid">
+      <div class="rp-cell"><b>${toFa(r.correct_count)}</b><small>صحیح</small></div>
+      <div class="rp-cell"><b>${toFa(r.total_questions-r.correct_count)}</b><small>غلط</small></div>
+      <div class="rp-cell"><b>${toFa(r.percentage)}٪</b><small>درصد</small></div>
+      <div class="rp-cell"><b><span class="bdg ${rk[1]}">${rk[0]}</span></b><small>رتبه</small></div>
+    </div>
+    <h4 class="rp-sub"><i class="fas fa-list"></i> تفصیل پاسخ‌ها</h4>
+    <div class="ans-list">${h}</div>
+    <div class="rp-act">
+      <button class="btn btn-dark" onclick="window.print()"><i class="fas fa-print"></i> چاپ</button>
+      <button class="btn btn-l" onclick="closeM('rModal')"><i class="fas fa-times"></i> بستن</button>
+    </div>`;
+}
+
+// ============ مودال ============
+function openM(id){$(id).classList.add('on');document.body.style.overflow='hidden'}
+function closeM(id){$(id).classList.remove('on');document.body.style.overflow=''}
+window.closeM=closeM;
+document.querySelectorAll('.modal').forEach(m=>{m.onclick=e=>{if(e.target===m)closeM(m.id)}});
+
+// ============ ادمین ============
+$('loginBtn').onclick=()=>{
+  if($('adminPw').value==='1212'){
+    $('loginBox').style.display='none';
+    $('adminPanel').style.display='block';
+    loadG();loadQ();
+  }else{
+    $('pwErr').classList.add('on');
+    $('adminPw').value='';
+    $('adminPw').focus();
+  }
+};
+$('adminPw').addEventListener('keydown',e=>{if(e.key==='Enter')$('loginBtn').click()});
+
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.tc').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    $(t.dataset.t).classList.add('on');
+  };
+});
+
+// ============ کارنامه‌ها ============
+async function loadG(){
+  S.grades=await getAll('g');
+  S.grades.sort((a,b)=>b.created_at-a.created_at);
+  renderG();
+}
+function renderG(f=''){
+  const stats=$('stats'),list=$('gradesList');
+  if(!S.grades.length){
+    stats.innerHTML='';
+    list.innerHTML='<div class="empty"><i class="fas fa-folder-open"></i><p>هنوز کارنامه‌ای ثبت نشده است</p></div>';
+    return;
+  }
+  const avg=(S.grades.reduce((s,g)=>s+g.score,0)/S.grades.length).toFixed(2);
+  const mx=Math.max(...S.grades.map(g=>g.score));
+  const mn=Math.min(...S.grades.map(g=>g.score));
+  const ps=S.grades.filter(g=>g.score>=10).length;
+  stats.innerHTML=`
+    <div class="stat"><div class="stat-ic b"><i class="fas fa-users"></i></div><div><b>${toFa(S.grades.length)}</b><small>شرکت‌کننده</small></div></div>
+    <div class="stat"><div class="stat-ic g"><i class="fas fa-chart-line"></i></div><div><b>${toFa(avg)}</b><small>میانگین</small></div></div>
+    <div class="stat"><div class="stat-ic a"><i class="fas fa-trophy"></i></div><div><b>${toFa(mx)}</b><small>بالاترین</small></div></div>
+    <div class="stat"><div class="stat-ic r"><i class="fas fa-arrow-down"></i></div><div><b>${toFa(mn)}</b><small>پایین‌ترین</small></div></div>
+    <div class="stat"><div class="stat-ic p"><i class="fas fa-check-double"></i></div><div><b>${toFa(ps)}</b><small>قبولی</small></div></div>`;
+  const fl=f?S.grades.filter(g=>g.student_name.includes(f)||g.student_class.includes(f)):S.grades;
+  if(!fl.length){
+    list.innerHTML='<div class="empty"><i class="fas fa-search"></i><p>نتیجه‌ای یافت نشد</p></div>';
+    return;
+  }
+  list.innerHTML=`<div class="tw"><table>
+    <thead><tr><th>#</th><th>نام</th><th>کلاس</th><th>نمره</th><th>درصد</th><th>تاریخ</th><th>عملیات</th></tr></thead>
+    <tbody>${fl.map((g,i)=>{
+      const b=g.percentage>=90?'ok':g.percentage>=75?'good':g.percentage>=50?'mid':'low';
+      return`<tr>
+        <td>${toFa(i+1)}</td>
+        <td><strong>${esc(g.student_name)}</strong></td>
+        <td>${esc(g.student_class)}</td>
+        <td><span class="bdg ${b}">${toFa(g.score)}</span></td>
+        <td>${toFa(g.percentage)}٪</td>
+        <td class="dt">${new Date(g.created_at).toLocaleString('fa-IR')}</td>
+        <td><button class="ico-b" onclick="openR(${g.id})"><i class="fas fa-eye"></i></button></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>`;
+}
+$('searchG').oninput=e=>renderG(e.target.value.trim());
+$('clearGBtn').onclick=async()=>{
+  if(!confirm('⚠️ تمام کارنامه‌ها پاک شوند؟'))return;
+  if(!confirm('مطمئنید؟ بازگشت‌ناپذیر است!'))return;
+  await clr('g');loadG();
+};
+
+// ============ سوالات ============
+async function loadQ(){
+  S.allQ=await getAll('q');
+  renderQAdmin();
+}
+function renderQAdmin(){
+  const list=$('qList');
+  if(!S.allQ.length){
+    list.innerHTML='<div class="empty"><i class="fas fa-inbox"></i><p>سوالی وجود ندارد</p></div>';
+    return;
+  }
+  list.innerHTML=S.allQ.map((q,i)=>`
+    <div class="adm-q">
+      <div class="adm-q-h">
+        <span class="q-n">سوال ${toFa(i+1)}</span>
+        <div class="adm-q-t">${esc(q.text)}</div>
+        <button class="ico-b d" onclick="delQ(${q.id})"><i class="fas fa-trash"></i></button>
+      </div>
+      <div class="adm-q-o">
+        ${q.options.map((o,oi)=>`
+          <div class="adm-q-it ${oi===q.correct?'c':''}">
+            <span class="adm-q-m">${toFa(oi+1)}</span>
+            <span style="flex:1">${esc(o)}</span>
+            ${oi===q.correct?'<i class="fas fa-check"></i>':''}
+          </div>
+        `).join('')}
+      </div>
+    </div>`).join('');
+}
+window.delQ=async id=>{
+  if(!confirm('این سوال حذف شود؟'))return;
+  await del('q',id);loadQ();
+};
+$('addQBtn').onclick=async()=>{
+  const t=$('nQText').value.trim();
+  const o=['nO1','nO2','nO3','nO4'].map(x=>$(x).value.trim());
+  const c=+$('nCorrect').value;
+  if(!t||o.some(x=>!x))return alert('همه فیلدها را پر کنید!');
+  await add('q',{text:t,options:o,correct:c,created_at:Date.now()});
+  ['nQText','nO1','nO2','nO3','nO4'].forEach(x=>$(x).value='');
+  $('nCorrect').value='0';
+  loadQ();
+  alert('✓ سوال اضافه شد!');
+};
+
+// ============ Escape ============
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')document.querySelectorAll('.modal.on').forEach(m=>closeM(m.id));
+});
+
+// ============ راه‌اندازی ============
+(async()=>{
+  try{await openDB();await seed();console.log('✅ آماده')}
+  catch(e){console.error(e);alert('خطا در راه‌اندازی! مرورگر را رفرش کنید.')}
+})();
+</script>
+</body>
+</html>
